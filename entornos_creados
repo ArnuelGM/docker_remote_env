@@ -1,0 +1,19 @@
+code_server_ferney 
+    $ docker run --name code_server_ferney --volume code_server_ferney:/var/www/html -d --restart always 192.168.1.6:5000/coder:2
+    $ docker network connect --ip 192.168.1.208 code_server_network code_server_ferney
+    # password NEhtjP2CTNz63VVwcr8RbH3UcKaa2ZYGCKAf79ZJ
+
+code_server_laura
+    $ docker run --name code_server_laura --volume code_server_laura:/var/www/html -d --restart always 192.168.1.6:5000/coder:2
+    $ docker network connect --ip 192.168.1.209 code_server_network code_server_laura
+    # password TFCXkL8V2MzVx9FYLa9WnjVYFyFdWg69LcbUXNwQ
+
+code_server_arnuel
+    $ docker run --name code_server_arnuel -d 192.168.1.6:5000/coder:2
+    $ docker network connect --ip 192.168.1.210 code_server_network code_server_arnuel
+    # password InnovaSoftC0l2019*.-.
+
+code_server_gabriel
+    $ docker run --name code_server_gabriel --volume code_server_gabriel:/var/www/html -d --restart always 192.168.1.6:5000/coder:2
+    $ docker network connect --ip 192.168.1.211 code_server_network code_server_gabriel
+    # password SaDUauGP326ubVFh3zP9fFSry7sb4rzTQrXdC4DA

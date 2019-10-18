@@ -1,0 +1,36 @@
+# Pasos para crear un entorno de desarrollo remoto con code-server
+
+--- 
+
+1. Crear una red a la que se conectaran los contenedores y darles acceso a la red local del host (equipo donde se ejecutaran los contenedores)
+	
+```bash
+	$ docker network create -d macvlan --subnet 192.168.1.208/24 --gateway 192.168.1.1 --ip-range 192.168.1.208/28 -o parent=enp1s0 network_name 
+	# network_name		= nombre de la red a crear
+```
+
+
+2. Crear un volumen que almacenara los datos del servidor en la ruta /var/www/html/ 
+
+```bash	
+	$ docker volumen create -d local --label volume_name --name volume_name
+	# volume_mame		= nombre del volumen a crear
+```
+
+
+3. Crear el contenedor a partir de la imagen designada (192.168.1.6:5000/coder:2)
+	
+```bash
+	$ docker run --name container_name --volume volume_name:/var/www/html -d --restart always 192.168.1.6:5000/coder:2
+	# container_name	= nombre del contenedor a crear
+	# volume_mame		= nombre del volumen creado en el paso 2
+```
+
+4. Conectar la red creada en el paso 1 al contenedor creado en el paso 3
+
+```bash
+	docker network connect --ip 192.168.1.208 network_name container_name
+	# --ip = ip que se asignara al contenedor en la red conectada
+	# network_name		= nombre de la red creada en el paso 1
+	# container_name	= nombre del contenedor creado en el paso 3
+```

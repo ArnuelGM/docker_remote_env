@@ -1,0 +1,9 @@
+# Utilidad para conectarse por ssh a un contenedor
+
+```bash
+    docker run -d -p 2222:22 \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -e FILTERS={\"name\":[\"^/my-container$\"]} -e AUTH_MECHANISM=noAuth \
+        jeroenpeeters/docker-ssh
+    # my-container = nombre del contenedor al que se quiere conectar
+```
