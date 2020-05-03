@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 # instalacion y configuracion de las dependencias
 RUN apt-get update && apt-get install -y openssl net-tools git sudo vim curl wget nginx
 RUN apt-get update && apt-get install -y software-properties-common
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends php7.2-fpm php7.2-cli php7.2-gd php7.2-curl php7.2-mbstring php7.2-soap php7.2-xmlrpc php7.2-zip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends php7.2-fpm php7.2-cli php7.2-gd php7.2-curl php7.2-mbstring php7.2-soap php7.2-xmlrpc php7.2-zip php7.2-mysql
 
 # instalacion php sql server driver
 RUN add-apt-repository ppa:ondrej/php -y
